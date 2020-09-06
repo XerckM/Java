@@ -4,7 +4,7 @@ public class HollowSquare {
     private static Scanner in = new Scanner(System.in); // created class level scanner variable "in" to apply through the whole class instead of creating more scanner variables
     public static void main(String[] args){
         char ans;
-        boolean init = true; // created boolean to loop through first user input
+        boolean isEnabled = true; // created boolean to loop through first user input
         Scanner in = new Scanner(System.in);
         System.out.print("Do you want to create a hollow box (Y/N)? ");
         ans = in.next().charAt(0);
@@ -13,17 +13,17 @@ public class HollowSquare {
                 int range = getRange();
                 printBox(range);
                 System.out.println();
+                System.out.print("Do you want to create a hollow box (Y/N)? ");
+                ans = in.next().charAt(0);
             }
             else if ((ans == 'N') || (ans == 'n')){ // breaks the loop and exits the program when user input is N or n
                 in.close();
-                break;
+                isEnabled = false;
             }
             else{
                 System.out.println("Only answer with 'Y' or 'y' for Yes, and 'N' or 'n' for No."); // raises error message when user input is other than intended
             }
-            System.out.print("Do you want to create a hollow box (Y/N)? ");
-            ans = in.next().charAt(0);
-        } while (init);
+        } while (isEnabled);
     }
     public static int getRange(){
         /*
@@ -34,13 +34,13 @@ public class HollowSquare {
 
         */
         int range = 0;
-        boolean valid = false;
+        boolean isValid = false;
         System.out.print("How many chars/last row? ");
         do{ // do-while loop to catch error InputMismatchException for non-integer characters
             try{
                 range = in.nextInt();
                 if (isValidRange(range) == true){ // uses the isValidRange() method to validate if user input is within range and exits the loop and returns the range
-                    valid = true;
+                    isValid = true;
                     return range;
                 }
                 else{
@@ -50,7 +50,7 @@ public class HollowSquare {
                 System.out.print("Not an integer! Try again! How many chars/last row? ");
                 in.next();
             }
-        } while (!valid);
+        } while (!isValid);
         return range;
     }
     public static boolean isValidRange(int range){
