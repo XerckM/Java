@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.*;
 
 public class MonthDay{
@@ -51,8 +50,11 @@ public class MonthDay{
         do{ // do-while loop to catch error InputMismatchException for non-integer characters
             try{
                 value = in.nextInt();
-                if (prompt.equals("Enter day (1-29): ") && (value > 29)){
-                    System.out.print("February only has 29 maximum days. " + prompt);
+                if (value < 0){
+                    System.out.print("Invalid input. " + prompt);
+                }
+                else if (prompt.equals("Enter day (1-29): ") && (value > 29)){
+                    System.out.print("February has only a maximum of 29 days. " + prompt);
                 }
                 else if (prompt.equals("Enter day (1-30): ") && (value > 30)){
                     System.out.print("This month has a maximum of 30 days. " + prompt);
