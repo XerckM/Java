@@ -1,11 +1,12 @@
 import java.util.*;
 
 public class HollowSquare {
+    private static Scanner in = new Scanner(System.in);
     public static void main(String[] args){
         char ans;
         boolean init = true;
         Scanner in = new Scanner(System.in);
-        System.out.print("Do you want to start (Y/N)? ");
+        System.out.print("Do you want to create a hollow box (Y/N)? ");
         ans = in.next().charAt(0);
         do{
             if ((ans == 'Y') || (ans == 'y')){
@@ -20,14 +21,13 @@ public class HollowSquare {
             else{
                 System.out.println("Only answer with 'Y' or 'y' for Yes, and 'N' or 'n' for No.");
             }
-            System.out.print("Do you want to start (Y/N)? ");
+            System.out.print("Do you want to create a hollow box (Y/N)? ");
             ans = in.next().charAt(0);
         } while (init);
     }
     public static int getRange(){
         int range = 0;
         boolean valid = false;
-        Scanner in = new Scanner(System.in);
         System.out.print("How many chars/last row? ");
         do{
             try{
@@ -44,7 +44,6 @@ public class HollowSquare {
                 in.next();
             }
         } while (!valid);
-        in.close();
         return range;
     }
     public static boolean isValidRange(int range){
@@ -56,7 +55,6 @@ public class HollowSquare {
         }
     }
     public static void printBox(int range){
-        Scanner in = new Scanner(System.in);
         System.out.print("What character? ");
         char value = in.next().charAt(0);
         System.out.println();
