@@ -50,9 +50,7 @@ public class HollowSquare {
         if ((range >= 5) && (range <= 21)){
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
     public static void printBox(int range){
         System.out.print("What character? ");
