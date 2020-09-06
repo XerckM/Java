@@ -13,7 +13,7 @@ public class HollowSquare {
                 int range = getRange();
                 printBox(range);
                 System.out.println();
-                System.out.print("Do you want to create a hollow box (Y/N)? ");
+                System.out.print("Do you want to create another hollow box (Y/N)? ");
                 ans = in.next().charAt(0);
             }
             else if ((ans == 'N') || (ans == 'n')){ // breaks the loop and exits the program when user input is N or n

@@ -20,16 +20,16 @@ public class MonthDay{
                 System.out.println();
                 System.out.println("You entered " + month + "/"+ day + " and it is in the " + output + " season!");
                 System.out.println();
+                System.out.print("Would you like to check another date (Y/N)? ");
+                ans = in.next().charAt(0);
             }
             else if ((ans == 'N') || (ans == 'n')){ // breaks the loop and exits the program when user input is N or n
                 in.close();
-                break;
+                isEnabled = false;
             }
             else{
                 System.out.println("Only answer with 'Y' or 'y' for Yes, and 'N' or 'n' for No."); // raises error message when user input is other than intended
             }
-            System.out.print("Would you like to check another date (Y/N)? ");
-            ans = in.next().charAt(0);
         } while (isEnabled);
     }
     public static String getMonth(){
