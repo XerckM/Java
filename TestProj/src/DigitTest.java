@@ -43,11 +43,10 @@ public class DigitTest{
         return false;
     }
     public static boolean isLengthValid(int value){
-        boolean valid = true;
         String len = Integer.toString(value);
         if ((len.length() < 2) || (len.length() > 2)){
-            valid = false;
+            return false;
         }
-        return valid;
+        return true;
     }
 }
