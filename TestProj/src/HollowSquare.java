@@ -1,11 +1,10 @@
 import java.util.*;
 
 public class HollowSquare {
-    private static Scanner in = new Scanner(System.in); // created class level scanner variable "in" to apply through the whole class instead of creating more scanner variables
+    private static Scanner in = new Scanner(System.in);
     public static void main(String[] args){
         char ans;
         boolean isEnabled = true; // created boolean to loop through first user input
-        Scanner in = new Scanner(System.in);
         System.out.print("Do you want to create a hollow box (Y/N)? ");
         ans = in.next().charAt(0);
         do{
