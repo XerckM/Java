@@ -6,12 +6,12 @@ public class MatrixArithmetic{
         menu();
     }
     public static void menu(){
-        options();
+        showOptions();
         int choice = getValue();
         System.out.println();
-        while (choice != 0){
+        while (choice != -1){
             switch (choice){
-                case 1:{
+                case 1:{ // add two matrices
                     System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
@@ -23,14 +23,14 @@ public class MatrixArithmetic{
                     int[][] result = addMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println();
+                    System.out.println("\n");
                     System.out.println("Command number 1 completed.");
                     System.out.println();
-                    options();
+                    showOptions();
                     choice = getValue();
                     break;
                 }
-                case 2:{
+                case 2:{ // subtract two matrices
                     System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
@@ -42,32 +42,90 @@ public class MatrixArithmetic{
                     int[][] result = subMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println();
+                    System.out.println("\n");
                     System.out.println("Command number 2 completed.");
                     System.out.println();
-                    options();
+                    showOptions();
                     choice = getValue();
                     break;
                 }
-                case 3:{ // need Multiply 2 matrices
+                case 3:{ // multiply two matrices
+                    System.out.println();
+                    int size = getSize();
+                    int[][] firstMatrix = getMatrix(size);
+                    int[][] secondMatrix = getMatrix(size);
+                    System.out.println("First matrix is:");
+                    printMatrix(firstMatrix);
+                    System.out.println("Second matrix is:");
+                    printMatrix(secondMatrix);
+                    int[][] result = prodTwoMatrix(firstMatrix, secondMatrix, size);
+                    System.out.println("The resulting matrix is:");
+                    printMatrix(result);
+                    System.out.println("\n");
+                    System.out.println("Command number 3 completed.");
+                    System.out.println();
+                    showOptions();
+                    choice = getValue();
                     break;
                 }
-                case 4:{ // need Multiply matrix by a constant
+                case 4:{ // multiply matrix to a constant
+                    System.out.println();
+                    int size = getSize();
+                    System.out.print("Enter the multiplication constant: ");
+                    int constant = getValue();
+                    int[][] matrix = getMatrix(size);
+                    System.out.println("The matrix is:");
+                    printMatrix(matrix);
+                    int[][] result = prodMatrixConstant(matrix, size, constant);
+                    System.out.println("The resulting matrix is:");
+                    printMatrix(result);
+                    System.out.println("\n");
+                    System.out.println("Command number 4 completed.");
+                    System.out.println();
+                    showOptions();
+                    choice = getValue();
                     break;
                 }
-                case 5:{ // need Transpose matrix
+                case 5:{ // transpose matrix
+                    System.out.println();
+                    int size = getSize();
+                    int[][] matrix = getMatrix(size);
+                    System.out.println("The matrix is:");
+                    printMatrix(matrix);
+                    int[][] result = transposeMatrix(matrix, size);
+                    System.out.println("The resulting matrix is:");
+                    printMatrix(result);
+                    System.out.println("\n");
+                    System.out.println("Command number 5 completed.");
+                    System.out.println();
+                    showOptions();
+                    choice = getValue();
                     break;
                 }
-                case 6:{ // need Matrix trace
+                case 6:{ // trace matrix
+                    System.out.println();
+                    int size = getSize();
+                    int[][] matrix = getMatrix(size);
+                    System.out.println("The matrix is:");
+                    printMatrix(matrix);
+                    int result = traceMatrix(matrix, size);
+                    System.out.print("The trace for this matrix is: " + result);
+                    System.out.println("\n");
+                    System.out.println("Command number 6 completed.");
+                    System.out.println();
+                    showOptions();
+                    choice = getValue();
                     break;
                 }
                 default:{
+                    System.out.println("Testing completed.");
+                    choice = -1;
                     break;
                 }
             }
         }
     }
-    public static void options(){
+    public static void showOptions(){
         System.out.print("Your options are: \n" + 
         "----------------- \n" + 
         "1) Add two matrices \n" + 
@@ -125,5 +183,44 @@ public class MatrixArithmetic{
             }
         }
         return sub;
+    }
+    public static int[][] prodTwoMatrix(int[][] firstMatrix, int[][] secondMatrix, int size){
+        int[][] product = new int[size][size];
+        for(int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                for (int k = 0; k < size; k++) {
+                    product[i][j] += firstMatrix[i][k] * secondMatrix[k][j];
+                }
+            }
+        }
+        return product;
+    }
+    public static int[][] prodMatrixConstant(int[][] matrix, int size, int constant){
+        int[][] product = new int[size][size];
+        for(int i = 0; i < size; i++){    
+            for(int j = 0; j < size; j++){    
+                product[i][j] = matrix[i][j] * constant;
+            }
+        }
+        return product;
+    }
+    public static int[][] transposeMatrix(int[][] matrix, int size){
+        int[][] newMatrix = new int[size][size];
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+               newMatrix[i][j] = 0;
+               for(int k = 0; k < size; k++){
+                  newMatrix[i][j] = matrix[j][i];
+               }
+            }
+        }
+        return newMatrix;
+    }
+    public static int traceMatrix(int[][] matrix, int size){
+        int trace = 0; 
+        for (int i=0; i < size; i++){
+            trace += matrix[i][i];
+        }
+        return trace; 
     }
 }
