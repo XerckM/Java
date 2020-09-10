@@ -110,7 +110,7 @@ public class MatrixArithmetic{
         int[][] add = new int[size][size];
         for(int i = 0; i < size; i++){    
             for(int j = 0; j < size; j++){    
-                add[i][j]=firstMatrix[i][j] + secondMatrix[i][j];
+                add[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
             }
         }
         return add;
