@@ -47,16 +47,16 @@ public class MatrixArithmetic{
                     choice = getValue();
                     break;
                 }
-                case 3:{
+                case 3:{ // need Multiply 2 matrices
                     break;
                 }
-                case 4:{
+                case 4:{ // need Multiply matrix by a constant
                     break;
                 }
-                case 5:{
+                case 5:{ // need Transpose matrix
                     break;
                 }
-                case 6:{
+                case 6:{ // need Matrix trace
                     break;
                 }
                 default:{
@@ -70,6 +70,7 @@ public class MatrixArithmetic{
         "----------------- \n" + 
         "1) Add two matrices \n" + 
         "2) Subtract 2 matrices \n" + 
+        "3) Multiply 2 matrices \n" +
         "4) Multiply matrix by a constant \n" + 
         "5) Transpose matrix \n" + 
         "6) Matrix trace \n" + 
@@ -100,7 +101,7 @@ public class MatrixArithmetic{
     public static void printMatrix(int[][] matrix, int size){
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
-               System.out.print(matrix[i][j] + "\t");
+               System.out.print(matrix[i][j] + "\t"); // need to fix this print to printf to align output of matrix
             }
             System.out.print("\n");
         }
