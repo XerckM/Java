@@ -12,16 +12,17 @@ public class MatrixArithmetic{
         while (choice != 0){
             switch (choice){
                 case 1:{
+                    System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
                     int[][] secondMatrix = getMatrix(size);
                     System.out.println("First matrix is:");
-                    printMatrix(firstMatrix, size);
+                    printMatrix(firstMatrix);
                     System.out.println("Second matrix is:");
-                    printMatrix(secondMatrix, size);
+                    printMatrix(secondMatrix);
                     int[][] result = addMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
-                    printMatrix(result, size);
+                    printMatrix(result);
                     System.out.println();
                     System.out.println("Command number 1 completed.");
                     System.out.println();
@@ -30,16 +31,17 @@ public class MatrixArithmetic{
                     break;
                 }
                 case 2:{
+                    System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
                     int[][] secondMatrix = getMatrix(size);
                     System.out.println("First matrix is:");
-                    printMatrix(firstMatrix, size);
+                    printMatrix(firstMatrix);
                     System.out.println("Second matrix is:");
-                    printMatrix(secondMatrix, size);
+                    printMatrix(secondMatrix);
                     int[][] result = subMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
-                    printMatrix(result, size);
+                    printMatrix(result);
                     System.out.println();
                     System.out.println("Command number 2 completed.");
                     System.out.println();
@@ -98,10 +100,10 @@ public class MatrixArithmetic{
             }
         }
     }
-    public static void printMatrix(int[][] matrix, int size){
-        for(int i = 0; i < size; i++){
-            for(int j = 0; j < size; j++){
-               System.out.print(matrix[i][j] + "\t"); // need to fix this print to printf to align output of matrix
+    public static void printMatrix(int[][] matrix){
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[i].length; j++){
+               System.out.printf("%4s", matrix[i][j] + "\t");
             }
             System.out.print("\n");
         }
