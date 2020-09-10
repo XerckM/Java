@@ -119,7 +119,7 @@ public class MatrixArithmetic{
         int[][] sub = new int[size][size];
         for(int i = 0; i < size; i++){    
             for(int j = 0; j < size; j++){    
-                sub[i][j]=firstMatrix[i][j] - secondMatrix[i][j];
+                sub[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
             }
         }
         return sub;
