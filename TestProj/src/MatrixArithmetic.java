@@ -218,7 +218,7 @@ public class MatrixArithmetic{
     }
     public static int traceMatrix(int[][] matrix, int size){
         int trace = 0; 
-        for (int i=0; i < size; i++){
+        for (int i = 0; i < size; i++){
             trace += matrix[i][i];
         }
         return trace; 
