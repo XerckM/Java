@@ -41,7 +41,7 @@ public class MatrixArithmetic{
                     System.out.println("The resulting matrix is:");
                     printMatrix(result, size);
                     System.out.println();
-                    System.out.println("Command number 1 completed.");
+                    System.out.println("Command number 2 completed.");
                     System.out.println();
                     options();
                     choice = getValue();
