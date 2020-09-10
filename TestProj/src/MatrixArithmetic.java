@@ -12,10 +12,10 @@ public class MatrixArithmetic{
         while (choice != -1){
             switch (choice){
                 case 1:{ // add two matrices
-                    System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
                     int[][] secondMatrix = getMatrix(size);
+                    System.out.println();
                     System.out.println("First matrix is:");
                     printMatrix(firstMatrix);
                     System.out.println("Second matrix is:");
@@ -23,18 +23,19 @@ public class MatrixArithmetic{
                     int[][] result = addMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println("\n");
+                    System.out.println();
                     System.out.println("Command number 1 completed.");
                     System.out.println();
                     showOptions();
                     choice = getValue();
+                    System.out.println();
                     break;
                 }
                 case 2:{ // subtract two matrices
-                    System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
                     int[][] secondMatrix = getMatrix(size);
+                    System.out.println();
                     System.out.println("First matrix is:");
                     printMatrix(firstMatrix);
                     System.out.println("Second matrix is:");
@@ -42,18 +43,19 @@ public class MatrixArithmetic{
                     int[][] result = subMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println("\n");
+                    System.out.println();
                     System.out.println("Command number 2 completed.");
                     System.out.println();
                     showOptions();
                     choice = getValue();
+                    System.out.println();
                     break;
                 }
                 case 3:{ // multiply two matrices
-                    System.out.println();
                     int size = getSize();
                     int[][] firstMatrix = getMatrix(size);
                     int[][] secondMatrix = getMatrix(size);
+                    System.out.println();
                     System.out.println("First matrix is:");
                     printMatrix(firstMatrix);
                     System.out.println("Second matrix is:");
@@ -61,60 +63,65 @@ public class MatrixArithmetic{
                     int[][] result = prodTwoMatrix(firstMatrix, secondMatrix, size);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println("\n");
+                    System.out.println();
                     System.out.println("Command number 3 completed.");
                     System.out.println();
                     showOptions();
                     choice = getValue();
+                    System.out.println();
                     break;
                 }
                 case 4:{ // multiply matrix to a constant
-                    System.out.println();
                     int size = getSize();
                     System.out.print("Enter the multiplication constant: ");
                     int constant = getValue();
                     int[][] matrix = getMatrix(size);
+                    System.out.println();
                     System.out.println("The matrix is:");
                     printMatrix(matrix);
                     int[][] result = prodMatrixConstant(matrix, size, constant);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println("\n");
+                    System.out.println();
                     System.out.println("Command number 4 completed.");
                     System.out.println();
                     showOptions();
                     choice = getValue();
+                    System.out.println();
                     break;
                 }
                 case 5:{ // transpose matrix
-                    System.out.println();
                     int size = getSize();
                     int[][] matrix = getMatrix(size);
+                    System.out.println();
                     System.out.println("The matrix is:");
                     printMatrix(matrix);
                     int[][] result = transposeMatrix(matrix, size);
                     System.out.println("The resulting matrix is:");
                     printMatrix(result);
-                    System.out.println("\n");
+                    System.out.println();
                     System.out.println("Command number 5 completed.");
                     System.out.println();
                     showOptions();
                     choice = getValue();
+                    System.out.println();
                     break;
                 }
                 case 6:{ // trace matrix
-                    System.out.println();
                     int size = getSize();
                     int[][] matrix = getMatrix(size);
+                    System.out.println();
                     System.out.println("The matrix is:");
                     printMatrix(matrix);
                     int result = traceMatrix(matrix, size);
+                    System.out.println();
                     System.out.print("The trace for this matrix is: " + result);
                     System.out.println("\n");
                     System.out.println("Command number 6 completed.");
                     System.out.println();
                     showOptions();
                     choice = getValue();
+                    System.out.println();
                     break;
                 }
                 default:{
