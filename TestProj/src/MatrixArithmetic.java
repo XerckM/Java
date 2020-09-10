@@ -169,7 +169,7 @@ public class MatrixArithmetic{
     public static void printMatrix(int[][] matrix){
         for(int i = 0; i < matrix.length; i++){
             for(int j = 0; j < matrix[i].length; j++){
-               System.out.printf("%4s", matrix[i][j] + "\t");
+               System.out.printf("%4s\t", matrix[i][j]);
             }
             System.out.print("\n");
         }
