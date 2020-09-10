@@ -135,6 +135,7 @@ public class MatrixArithmetic{
         "5) Transpose matrix \n" + 
         "6) Matrix trace \n" + 
         "0) EXIT \n" +
+        "----------------- \n" +
         "Please enter your option: ");
     }
     public static int getValue(){
