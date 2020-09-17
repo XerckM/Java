@@ -26,7 +26,7 @@ public class ArraysPartTwo{
         try{
             String filename = in.next();
             File file = new File(filename);
-            Scanner inputFile = new Scanner(file).useDelimiter("\\s+");
+            Scanner inputFile = new Scanner(file).useDelimiter("\s+");
             while (inputFile.hasNext()){
                 if (inputFile.hasNextInt()){
                     temp.add(inputFile.nextInt());
