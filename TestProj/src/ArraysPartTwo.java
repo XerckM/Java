@@ -41,7 +41,11 @@ public class ArraysPartTwo{
             System.out.println("---File Not Found! Exit program!---");
             System.exit(0);
         }
-        int[] array = temp.stream().filter(i -> i != null).mapToInt(i -> i).toArray();
+        int[] array = temp.stream().filter(i -> i != null).mapToInt(i -> i).toArray(); // stream() way of converting List<Integer> to int[]
+        /*int[] array2 = new int[temp.size()];
+        for (int i = 0; i < array2.length; i++){    // for-loop way of converting List<Integer> to int[]
+            array2[i] = temp.get(i);
+        }*/
         return array;
     }
     private static int getInt(){
