@@ -6,9 +6,9 @@ public class ArraysPartTwo{
     private static Scanner in = new Scanner(System.in);
     private static final int[] array = getArray();
     public static void main(String[] args){
-        if (array.length == 0){
+        if (array.length == 0 || array.length == 1){
             System.out.println();
-            System.out.print("--- The file doesn't contain any integers. Exit program! ---");
+            System.out.print("--- The file doesn't contain enough integers. Exit program! ---");
             System.exit(0);
         }
         else{
