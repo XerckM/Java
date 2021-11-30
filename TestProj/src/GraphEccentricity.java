@@ -3,20 +3,13 @@ import java.io.File;
 
 public class GraphEccentricity {
     /*
-     * Programming Task:
+     * 
      * In a weighted directed graph G = (V, E), the eccentricity of a vertex v ∈ V is defined by
      *                      ecc(v) = max{δ(v, u) | u ∈ V },
      * where δ(v, u) is the weight of a shortest path from v to u (in other words ecc(v) is the smallest
      * distance to the vertex u that is the furthest from v).
      * 
-     * Write a Java program that computes the eccentricity of every vertex. Describe the method
-     * you are using.
-     * 
-     * The graph is given in a file that has two lines. The first line has n (the number of nodes, which
-     * are labeled 0, 1, . . . , n − 1) and the second line has a list of n^2 numbers w_0, w_1, . . . , w_(n^2)−1
-     * , where w_k is the weight of the edge (i, j) for i = k/n and j = k (mod n) (if w_k = −1, then there is no
-     * edge from i to j). Your program should read the file, build the adjacency matrix representation
-     * of G, and then compute with your method the eccentricities of all vertices.
+     * This is a Java program that computes the eccentricity of every vertex of an undirected weighted graph.
      * 
      */
 
