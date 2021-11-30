@@ -87,7 +87,7 @@ public class GraphEccentricity {
             Each item is a Node pair of (vertex, weight)
             Weight/distance is used for comparison
         */
-        PriorityQueue<Node> minheap = new PriorityQueue<>(Comparator.comparingInt(node -> node.weight));
+        PriorityQueue<Node> minHeap = new PriorityQueue<>(Comparator.comparingInt(node -> node.weight));
         
         // Set dist[i] to INFINITY and prev[i] to -1
         for (int i = 0; i < n; i++) {
@@ -99,13 +99,13 @@ public class GraphEccentricity {
         dist[s] = 0;
 
         // Push source node to PriorityQueue with a distance of 0
-        minheap.add(new Node(s, 0));
+        minHeap.add(new Node(s, 0));
 
         // dijkstra algorithm
-        while(!minheap.isEmpty()) {
+        while(!minHeap.isEmpty()) {
 
             // Remove and return the next best vertex
-            Node node = minheap.poll();
+            Node node = minHeap.poll();
 
             // get vertex number
             int u = node.vertex;
@@ -128,7 +128,7 @@ public class GraphEccentricity {
                         Only the instance with minimum distance is considered and
                         other instances will be ignored.
                      */
-                    minheap.add(new Node(v, dist[v]));
+                    minHeap.add(new Node(v, dist[v]));
                     prev[v] = u;
                 }
             }
