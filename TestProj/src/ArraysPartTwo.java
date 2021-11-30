@@ -2,31 +2,98 @@ import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class ArraysPartTwo{
-    private static Scanner in = new Scanner(System.in);
-    private static final int[] array = getArray();
+public class ArraysPartTwo {
+    public static final int MAX = 100;
+    public static final int MIN = 1;
     public static void main(String[] args){
+        int[] array = getArray();
         if (array.length == 0 || array.length == 1){
             System.out.println();
             System.out.print("--- The file doesn't contain enough integers. Exit program! ---");
             System.exit(0);
         }
-        else{
-            System.out.println();
-            System.out.println("The list size is: " + array.length);
-            System.out.println("The list is: ");
-            print(array);
-            System.out.println();
-            menu();
+        System.out.println();
+        System.out.println("The list size is: " + array.length);
+        System.out.println("The list is: ");
+        print(array);
+        System.out.println();
+        int option = menu();
+        while (option != 0){
+            switch (option){
+                case 1:{
+                    if (isAllEven(array) == true){
+                        System.out.println("All values are even.");
+                    }
+                    else{
+                        System.out.println("Some values/list are odd.");
+                    }
+                    System.out.println();
+                    option = menu();
+                    break;
+                }
+                case 2:{
+                    if (isUnique(array) == true){
+                        System.out.println("Some values/list appear multiple times ");
+                    }
+                    else{
+                        System.out.println("All values are unique.");
+                    }
+                    System.out.println();
+                    option = menu();
+                    break;
+                }
+                case 3:{
+                    System.out.println("The minimum gap between 2 adjacent values is " + minGap(array));
+                    System.out.println();
+                    option = menu();
+                    break;
+                }
+                case 4:{
+                    double mean = getMean(array);
+                    double variance = getVariance(array, mean);
+                    System.out.println();
+                    System.out.println("The statistics for this list:");
+                    print(array);
+                    System.out.printf("The mean for this list is: %.02f\n", mean);
+                    System.out.printf("The variance for this list is: %.02f\n", variance);
+                    System.out.printf("The standard deviation for this list is: %.02f\n", Math.sqrt(variance));
+                    System.out.println();
+                    option = menu();
+                    break;
+                }
+                case 5:{
+                    int[] copy = copy(array);
+                    bubbleSort(copy);
+                    System.out.println("The list sorted:");
+                    print(copy);
+                    System.out.println("80%-percentile from this list:");
+                    print(top_20(array));
+                    System.out.println();
+                    option = menu();
+                    break;
+                }
+                default:{
+                    System.out.println();
+                    option = menu();
+                    break;
+                }
+            }
         }
+        System.out.println("Testing completed.");
+    }
+    public static int initRand() {
+        Random rand = new Random();
+        int num = rand.nextInt(MAX-MIN) + MIN;
+        return num;
     }
     private static int[] getArray(){
+        Scanner in = new Scanner(System.in);
         List<Integer> temp = new ArrayList<Integer>();
         System.out.print("Please input the name of the file to be opened: ");
         try{
             String filename = in.next();
             File file = new File(filename);
-            Scanner inputFile = new Scanner(file).useDelimiter("\s+");
+            Scanner inputFile = new Scanner(file);
             while (inputFile.hasNext()){
                 if (inputFile.hasNextInt()){
                     temp.add(inputFile.nextInt());
@@ -48,20 +115,12 @@ public class ArraysPartTwo{
         }*/
         return array;
     }
-    private static int getInt(){
-        boolean isNotEnabled = false;
-        int value = 0;
-        do{
-            try{
-                System.out.print("Please enter your option: ");
-                value = in.nextInt();
-                isNotEnabled = true;
-            } catch (InputMismatchException e){
-                System.out.print("Not an integer! Try again! ");
-                in.next();
-            }
-        } while(!isNotEnabled);
-        return value;
+    public static int getInt(Scanner input, String prompt){
+        while(!input.hasNextInt()) {
+            input.next();
+            System.out.print("Not an integer! Try again! " + prompt);
+        }
+        return input.nextInt();
     }
     private static boolean isAllEven(int[] array){
         for (int i = 0; i < array.length; i++){
@@ -74,7 +133,7 @@ public class ArraysPartTwo{
     private static void print(int[] array){
         for (int i: array){
             if (i != 0){
-                System.out.print(i + "\t");
+                System.out.print(i + " ");
             }
         }
         System.out.println();
@@ -132,14 +191,16 @@ public class ArraysPartTwo{
         }
         return total / (array.length);
     }
-    private static double getVariance(int[] array, double mean){
+    public static double getVariance(int[] array, double mean){
         int size = array.length;
         double temp = 0;
         for(double a: array)
             temp += (a-mean)*(a-mean);
         return temp/(size-1);
     }
-    private static void printOptions(){
+    public static int menu(){
+        Scanner in = new Scanner(System.in);
+        String prompt = "Please enter your option: ";
         System.out.println("Your options are: \n" +
         "----------------- \n" +
         "1) All even values? \n" +
@@ -148,76 +209,8 @@ public class ArraysPartTwo{
         "4) Statistics \n" +
         "5) Print 80% percentile \n" +
         "0) EXIT");
+        System.out.print(prompt);
+        int choice = getInt(in, prompt);
+        return choice;
     }
-    private static void menu(){
-        printOptions();
-        int option = getInt();
-        while (option != -1){
-            switch (option){
-                case 1:{
-                    if (isAllEven(array) == true){
-                        System.out.println("All values are even.");
-                    }
-                    else{
-                        System.out.println("Some values/list are odd.");
-                    }
-                    System.out.println();
-                    printOptions();
-                    option = getInt();
-                    break;
-                }
-                case 2:{
-                    if (isUnique(array) == true){
-                        System.out.println("Some values/list appear multiple times ");
-                    }
-                    else{
-                        System.out.println("All values are unique.");
-                    }
-                    System.out.println();
-                    printOptions();
-                    option = getInt();
-                    break;
-                }
-                case 3:{
-                    System.out.println("The minimum gap between 2 adjacent values is " + minGap(array));
-                    System.out.println();
-                    printOptions();
-                    option = getInt();
-                    break;
-                }
-                case 4:{
-                    double mean = getMean(array);
-                    double variance = getVariance(array, mean);
-                    System.out.println();
-                    System.out.println("The statistics for this list:");
-                    print(array);
-                    System.out.printf("The mean for this list is: %.02f\n", mean);
-                    System.out.printf("The variance for this list is: %.02f\n", variance);
-                    System.out.printf("The standard deviation for this list is: %.02f\n", Math.sqrt(variance));
-                    System.out.println();
-                    printOptions();
-                    option = getInt();
-                    break;
-                }
-                case 5:{
-                    int[] copy = copy(array);
-                    bubbleSort(copy);
-                    System.out.println("The list sorted:");
-                    print(copy);
-                    System.out.println("80%-percentile from this list:");
-                    print(top_20(array));
-                    System.out.println();
-                    printOptions();
-                    option = getInt();
-                    break;
-                }
-                default:{
-                    System.out.println();
-                    System.out.println("Testing Completed.");
-                    option = -1;
-                    break;
-                }
-            }
-        }
-    }   
 }

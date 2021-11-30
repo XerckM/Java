@@ -1,0 +1,9 @@
+public class MyClass{
+    private int myInt;
+    public void set(int n){
+        myInt = n;
+    }
+    public String toString(){
+        return "The value = " + myInt;
+    }
+}
