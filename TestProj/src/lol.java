@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class lol {
+public class RandomSeed {
     // implemented after https://docs.oracle.com/javase/7/docs/api/java/util/Random.html
     public static int next(long seed) {
         int bits=32;
